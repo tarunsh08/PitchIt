@@ -4,6 +4,9 @@ import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 import { Button } from './ui/button'
+import { Author, Startup } from '@/sanity/types'
+
+export type StartupCardType = Omit<Startup, "author"> & { author?: Author }
 
 const StartupCard = ({post}: {post: StartupCardType}) => {
     const { _createdAt, views, _id, author, description, image, category, title } = post
@@ -49,16 +52,15 @@ const StartupCard = ({post}: {post: StartupCardType}) => {
           </p>
         </div>
         <div className='relative h-48 w-full overflow-hidden'>
-          <Image 
+          <img
             src={image} 
             alt={title}
-            fill
             className='object-cover group-hover:scale-105 transition-transform duration-300'
           />
         </div>
       </Link>
       <div className='flex justify-center items-center gap-3 mt-5'>
-        <Link href={`/?query=${category.toLowerCase()}`}>
+        <Link href={`/?query=${category?.toLowerCase()}`}>
         <p className='text-sm font-medium text-gray-500 hover:underline'>
           {category}
         </p>
