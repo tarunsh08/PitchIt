@@ -1,11 +1,13 @@
 import { client } from '@/sanity/lib/client';
 import { STARTUP_BY_ID_QUERY } from '@/sanity/lib/queries';
 import { notFound } from 'next/navigation';
-import React from 'react'
+import React, { Suspense } from 'react'
 import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
 import markdownit from 'markdown-it';
+import { Skeleton } from '@/components/ui/skeleton';
+import View from '@/components/View';
 
 const md = markdownit();
 
@@ -108,6 +110,12 @@ const page = async({ params }: { params: Promise<{ id: string }>}) => {
                         </div>
                     </div>
                 </div>
+                <hr />
+                {/* Todo: editor selected startups */}
+
+                <Suspense fallback={<Skeleton className="h-[200px]" />}>
+                    <View id={id}/>
+                </Suspense>
             </section>
         </>
     )
