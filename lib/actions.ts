@@ -5,6 +5,7 @@ import { parseServerActionResponse } from "./utils"
 import slugify from "slugify"
 import { writeClient } from "@/sanity/lib/write-client"
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createPitch = async (state: any, form: FormData, pitch: string) => {
     const session = await auth();
 

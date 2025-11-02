@@ -36,7 +36,7 @@ const Navbar = async() => {
                     <LogOut size={18} className='group-hover:scale-110 transition-transform cursor-pointer' />
                   </button>
                 </form>
-                <Link href={`/user/${session?.id}`} className='group'>
+                <Link href={`/user/${session?.user?.id}`} className='group'>
                   <div className='flex items-center gap-2 p-1 rounded-full hover:bg-yellow-50 transition-all duration-300'>
                     <Avatar className='border-2 border-yellow-200 group-hover:border-yellow-400 transition-colors duration-300'>
                       <AvatarImage src={session?.user?.image} className='group-hover:scale-105 transition-transform duration-300' />
